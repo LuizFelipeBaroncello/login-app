@@ -24,7 +24,6 @@ export default function Home() {
     const sendCadastroRequest = () => {
         const { password } = credentialsCadastro;
 
-        //todo colocar salt em variavel de ambiente
         const key = pbkdf2.pbkdf2Sync(password, 'salt', 1, 16, 'sha512');
 
         const derivatedPass = key.toString('hex');
@@ -55,7 +54,7 @@ export default function Home() {
     const sendLoginRequest = () => {
         const {userName, password } = credentialsLogin;
 
-        const key = pbkdf2.pbkdf2Sync("leopardo", '6e7320def3d5acc4b16f07d63cfe3dc8', 1000, 16, 'sha512');
+        const key = pbkdf2.pbkdf2Sync( password, '6e7320def3d5acc4b16f07d63cfe3dc8', 1, 16, 'sha512');
 
         const derivatedPass = key.toString('hex');
 
@@ -85,7 +84,10 @@ export default function Home() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: codeAuthentication
+            body: {
+                userName: credentialsLogin.userName,
+                OTPCode: codeAuthentication
+            }
         })
             .then(function(response) {
                 return response.blob();
