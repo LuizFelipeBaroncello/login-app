@@ -2,8 +2,12 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import {useState} from "react";
 import pbkdf2 from "pbkdf2";
+import QRCode from "react-qr-code";
+
 
 export default function Home() {
+
+    const [qrCodeText, setQrCodeText] = useState(null);
 
     const [credentialsCadastro, setCredentialsCadastro] = useState({
         userName: "",
@@ -37,10 +41,13 @@ export default function Home() {
             })
         })
             .then(function(response) {
-                return response.blob();
+                return response.json();
             })
-            .then(function(myBlob) {
-                console.log(myBlob)
+            .then(function(qrcodeText) {
+                const mock = "teste";
+
+                setQrCodeText(mock);
+
             });
     }
 
@@ -111,6 +118,7 @@ export default function Home() {
           </button>
           <br/>
           <br/>
+          {qrCodeText && <QRCode value={qrCodeText} />}
           <br/>
           <br/>
           <br/>
