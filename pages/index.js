@@ -8,6 +8,7 @@ import QRCode from "react-qr-code";
 export default function Home() {
 
     const [qrCodeText, setQrCodeText] = useState(null);
+    const [loginSuccess, setLoginSuccess] = useState(false);
 
     const [credentialsCadastro, setCredentialsCadastro] = useState({
         userName: "",
@@ -70,6 +71,7 @@ export default function Home() {
                 return response.json();
             })
             .then(function(myBlob) {
+                setLoginSuccess(true);
                 console.log(myBlob)
             });
     }
@@ -136,6 +138,7 @@ export default function Home() {
 
           <br/>
           <br/>
+          {loginSuccess && <div>Digite o código que aparece no seu aplicativo autenticador</div>}
           <br/>
           <br/>
           <br/>
