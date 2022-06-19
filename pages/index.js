@@ -143,10 +143,10 @@ export default function Home() {
           <br/>
           <br/>
           <br/>
-          <input type="text" value={codeAuthentication} onChange={(event) => setCodeAuthentication(event.target.value)}/>
-          <button onClick={() => sendTwoFactorRequest()}>
+          {loginSuccess && <input type="text" value={codeAuthentication} onChange={(event) => setCodeAuthentication(event.target.value)}/>}
+          {loginSuccess && <button onClick={() => sendTwoFactorRequest()}>
               Autenticate
-          </button>
+          </button>}
 
       </main>
     </div>
