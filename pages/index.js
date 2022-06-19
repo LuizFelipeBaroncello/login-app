@@ -24,7 +24,7 @@ export default function Home() {
     const sendCadastroRequest = () => {
         const { password } = credentialsCadastro;
 
-        const key = pbkdf2.pbkdf2Sync(password, 'salt', 1, 16, 'sha512');
+        const key = pbkdf2.pbkdf2Sync(password, '6e7320def3d5acc4b16f07d63cfe3dc8', 1, 16, 'sha512');
 
         const derivatedPass = key.toString('hex');
 
