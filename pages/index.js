@@ -42,11 +42,8 @@ export default function Home() {
             .then(function(response) {
                 return response.json();
             })
-            .then(function(qrcodeText) {
-                const mock = "teste";
-
-                setQrCodeText(mock);
-
+            .then(function(obj) {
+                setQrCodeText(obj.barCodeUrl);
             });
     }
 
@@ -70,7 +67,7 @@ export default function Home() {
             })
         })
             .then(function(response) {
-                return response.blob();
+                return response.json();
             })
             .then(function(myBlob) {
                 console.log(myBlob)
@@ -90,7 +87,7 @@ export default function Home() {
             }
         })
             .then(function(response) {
-                return response.blob();
+                return response.json();
             })
             .then(function(myBlob) {
                 console.log(myBlob)
