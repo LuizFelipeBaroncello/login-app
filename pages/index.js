@@ -83,10 +83,10 @@ export default function Home() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: {
+            body: JSON.stringify({
                 userName: credentialsLogin.userName,
                 OTPCode: codeAuthentication
-            }
+            })
         })
             .then(function(response) {
                 return response.json();
